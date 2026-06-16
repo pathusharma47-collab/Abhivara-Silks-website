@@ -62,7 +62,7 @@ function Index() {
               key={currentHero}
               src={heroImages[currentHero]}
               alt={`Model wearing a handwoven Abivara silk saree ${currentHero + 1}`}
-              className="absolute inset-0 h-full w-full object-cover object-[30%_center] md:object-center"
+              className="absolute inset-0 h-full w-full object-cover object-left md:object-center"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}

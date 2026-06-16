@@ -24,7 +24,7 @@ function BridalPage() {
             <img src={bridalImg} alt="Bridal Collection" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center px-4">
                <p className="text-[11px] uppercase tracking-[0.4em] text-[var(--ivory)] mb-4">The Wedding Edit</p>
-               <h1 className="text-5xl md:text-7xl font-serif text-[var(--ivory)] font-light">Bridal Silks</h1>
+               <h1 className="text-4xl md:text-7xl font-serif text-[var(--ivory)] font-light">Bridal Silks</h1>
             </div>
           </div>
 

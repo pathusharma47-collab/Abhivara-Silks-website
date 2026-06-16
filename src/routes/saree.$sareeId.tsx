@@ -32,12 +32,12 @@ function SareeProductPage() {
               <div className="w-full aspect-[4/5] bg-[var(--border)] overflow-hidden rounded-sm">
                 <img src={mainImg} alt={title} className="w-full h-full object-cover transition-opacity duration-500" />
               </div>
-              <div className="flex gap-4 overflow-x-auto pb-2">
+              <div className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory hide-scrollbar">
                 {images.map((img, i) => (
                   <button 
                     key={i} 
                     onClick={() => setMainImg(img)}
-                    className={`w-24 aspect-[4/5] shrink-0 rounded-sm overflow-hidden border transition-all duration-300 ${mainImg === img ? 'border-[var(--bronze)]' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                    className={`w-24 aspect-[4/5] shrink-0 snap-start rounded-sm overflow-hidden border transition-all duration-300 ${mainImg === img ? 'border-[var(--bronze)]' : 'border-transparent opacity-60 hover:opacity-100'}`}
                   >
                     <img src={img} alt={`Thumbnail ${i + 1}`} className="w-full h-full object-cover" />
                   </button>
@@ -46,9 +46,8 @@ function SareeProductPage() {
             </div>
 
             {/* Right: Details */}
-            <div className="flex flex-col pt-8 md:pt-12">
               <p className="eyebrow">Heritage Edition</p>
-              <h1 className="mt-4 text-4xl md:text-5xl font-serif text-[var(--foreground)] leading-[1.1]">{title}</h1>
+              <h1 className="mt-4 text-3xl md:text-5xl font-serif text-[var(--foreground)] leading-[1.1]">{title}</h1>
               
               <p className="mt-6 text-2xl font-sans text-[var(--foreground)] font-light">₹ 45,000</p>
               

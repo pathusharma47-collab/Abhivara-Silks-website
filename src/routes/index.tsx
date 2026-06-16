@@ -56,7 +56,7 @@ function Index() {
       <SiteNav />
       <main className="bg-background text-foreground">
         {/* HERO */}
-        <section className="relative w-full aspect-square md:aspect-video overflow-hidden bg-[#452718]">
+        <section className="relative w-full h-[85svh] md:h-auto md:aspect-video overflow-hidden bg-[#452718]">
           <AnimatePresence initial={false}>
             <motion.img
               key={currentHero}
@@ -67,6 +67,17 @@ function Index() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 1.0, ease: "easeInOut" }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = Math.abs(offset.x) * velocity.x;
+                if (swipe < -100 || offset.x < -50) {
+                  setCurrentHero((prev) => (prev + 1) % heroImages.length);
+                } else if (swipe > 100 || offset.x > 50) {
+                  setCurrentHero((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+                }
+              }}
             />
           </AnimatePresence>
 
@@ -97,7 +108,7 @@ function Index() {
                 <p className="eyebrow">Our Atelier</p>
               </Reveal>
               <Reveal delay={0.1}>
-                <h2 className="mt-8 text-4xl leading-[1.1] md:text-6xl">
+                <h2 className="mt-8 text-3xl leading-[1.1] md:text-6xl">
                   Every thread<br />carries a legacy.
                 </h2>
               </Reveal>
@@ -125,7 +136,7 @@ function Index() {
               <div className="flex items-end justify-between gap-6">
                 <div>
                   <p className="eyebrow">The Edits</p>
-                  <h2 className="mt-6 text-4xl md:text-6xl">Featured Collections</h2>
+                  <h2 className="mt-6 text-3xl md:text-6xl">Featured Collections</h2>
                 </div>
                 <a href="#collections" className="hidden text-[11px] uppercase tracking-[0.32em] link-underline md:inline-block">
                   View All
@@ -173,15 +184,15 @@ function Index() {
           <div className="px-6 md:px-12">
             <Reveal>
               <p className="eyebrow">Signature Weaves</p>
-              <h2 className="mt-6 max-w-3xl text-4xl md:text-6xl">
+              <h2 className="mt-6 max-w-3xl text-3xl md:text-6xl">
                 Six houses of cloth, one quiet language.
               </h2>
             </Reveal>
           </div>
-          <div className="mt-16 overflow-x-auto">
+          <div className="mt-16 overflow-x-auto pb-8 hide-scrollbar snap-x snap-mandatory">
             <ul className="flex min-w-max gap-6 px-6 md:px-12">
               {weaves.map((w, i) => (
-                <li key={w} className="w-[72vw] max-w-[360px] shrink-0 md:w-[28vw]">
+                <li key={w} className="w-[75vw] max-w-[360px] shrink-0 md:w-[28vw] snap-center">
                   <a href="#" className="block hover-zoom">
                     <div className="aspect-[3/4] overflow-hidden bg-secondary">
                       <img
@@ -229,7 +240,7 @@ function Index() {
             <div>
               <Reveal><p className="eyebrow">The Hands Behind</p></Reveal>
               <Reveal delay={0.1}>
-                <h2 className="mt-8 text-4xl leading-[1.1] md:text-5xl">
+                <h2 className="mt-8 text-3xl leading-[1.1] md:text-5xl">
                   Pure silk.<br />Pure mulberry zari.<br />Pure patience.
                 </h2>
               </Reveal>
@@ -272,7 +283,7 @@ function Index() {
               <p className="eyebrow">In Her Words</p>
             </Reveal>
             <Reveal delay={0.1}>
-              <blockquote className="mt-10 font-serif text-3xl leading-[1.3] text-foreground md:text-5xl">
+              <blockquote className="mt-10 font-serif text-2xl leading-[1.3] text-foreground md:text-5xl">
                 “There is a stillness to an Abivara saree —
                 a sense that someone has waited a long time
                 to give you something true.”
@@ -291,7 +302,7 @@ function Index() {
           <div className="mx-auto grid max-w-[1280px] gap-16 md:grid-cols-2 md:gap-24">
             <Reveal>
               <p className="eyebrow">The Circle</p>
-              <h2 className="mt-6 text-4xl leading-[1.1] md:text-5xl">
+              <h2 className="mt-6 text-3xl leading-[1.1] md:text-5xl">
                 Join the<br />Abivara Circle.
               </h2>
             </Reveal>

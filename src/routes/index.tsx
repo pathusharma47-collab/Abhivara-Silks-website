@@ -56,13 +56,13 @@ function Index() {
       <SiteNav />
       <main className="bg-background text-foreground">
         {/* HERO */}
-        <section className="relative w-full h-[85svh] md:h-auto md:aspect-video overflow-hidden bg-[#452718]">
+        <section className="relative w-full aspect-[4/5] md:aspect-video overflow-hidden bg-[#190D02]">
           <AnimatePresence initial={false}>
             <motion.img
               key={currentHero}
               src={heroImages[currentHero]}
               alt={`Model wearing a handwoven Abivara silk saree ${currentHero + 1}`}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover object-[30%_center] md:object-center"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}

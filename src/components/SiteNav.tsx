@@ -167,11 +167,30 @@ export function SiteNav() {
         </button>
       </nav>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 top-[72px] md:top-[88px] z-40 bg-[#190D02] text-white transition-transform duration-500 ease-in-out md:hidden overflow-y-auto ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+
+      {/* Mobile Side Panel */}
+      <div 
+        className={`fixed inset-y-0 left-0 w-[85vw] max-w-sm z-[70] bg-[#190D02] text-white shadow-2xl transition-transform duration-500 ease-in-out md:hidden overflow-y-auto flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
-        <div className="flex flex-col px-6 py-8 gap-8">
+        <div className="flex items-center justify-between px-6 py-6 border-b border-white/10">
+          <span className="font-serif text-xl tracking-[0.2em] uppercase text-white font-light">
+            Menu
+          </span>
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-white hover:text-[var(--bronze)] transition-colors"
+            aria-label="Close Menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        <div className="flex flex-col px-6 py-8 gap-8 flex-1">
           <ul className="flex flex-col gap-6 text-[13px] uppercase tracking-[0.28em]">
             {links.map((l) => (
               <li key={l.label}>
@@ -221,6 +240,16 @@ export function SiteNav() {
                 )}
               </li>
             ))}
+            
+            {/* Cart Link in Side Panel */}
+            <li className="pt-4">
+              <button 
+                className="flex items-center justify-between w-full text-left link-underline pb-2 border-b border-white/10 text-[var(--bronze)]"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Cart (0)
+              </button>
+            </li>
           </ul>
         </div>
       </div>

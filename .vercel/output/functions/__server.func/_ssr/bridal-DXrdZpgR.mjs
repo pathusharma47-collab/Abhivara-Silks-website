@@ -1,8 +1,8 @@
 import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { n as saree1_default, t as SiteNav } from "./SiteNav-BrzCYnEt.mjs";
+import { n as saree1_default, t as SiteNav } from "./SiteNav-CanpzpGT.mjs";
 import { n as hero_1_default, t as collection_bridal_default } from "./hero-1-B7lxaDBU.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/bridal-VQVPBn2g.js
+//#region node_modules/.nitro/vite/services/ssr/assets/bridal-DXrdZpgR.js
 var import_jsx_runtime = require_jsx_runtime();
 function BridalPage() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SiteNav, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
@@ -29,7 +29,7 @@ function BridalPage() {
 							className: "text-[11px] uppercase tracking-[0.4em] text-[var(--ivory)] mb-4",
 							children: "The Wedding Edit"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-							className: "text-5xl md:text-7xl font-serif text-[var(--ivory)] font-light",
+							className: "text-4xl md:text-7xl font-serif text-[var(--ivory)] font-light",
 							children: "Bridal Silks"
 						})]
 					})]

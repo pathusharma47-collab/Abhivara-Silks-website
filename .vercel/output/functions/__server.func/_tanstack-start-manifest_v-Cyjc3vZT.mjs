@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DnVSSdsx.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-Cyjc3vZT.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/Users/apple/Downloads/woven-elegance-canvas-main/src/routes/__root.tsx",
@@ -7,35 +7,35 @@ var tsrStartManifest = () => ({ routes: {
 			"/bridal",
 			"/saree/$sareeId"
 		],
-		preloads: ["/assets/index-BHxeAhaU.js"],
+		preloads: ["/assets/index-DxM9_dJ2.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-BHxeAhaU.js"
+			src: "/assets/index-DxM9_dJ2.js"
 		} }]
 	},
 	"/": {
 		filePath: "/Users/apple/Downloads/woven-elegance-canvas-main/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-DpRPoqlq.js",
-			"/assets/hero-1-B8hU-ZZx.js",
-			"/assets/SiteNav-7WMbbPSj.js"
+			"/assets/routes-DTT9GjhJ.js",
+			"/assets/SiteNav-CZ4WByMm.js",
+			"/assets/hero-1-B8hU-ZZx.js"
 		]
 	},
 	"/bridal": {
 		filePath: "/Users/apple/Downloads/woven-elegance-canvas-main/src/routes/bridal.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/bridal-jLwulCvg.js",
-			"/assets/hero-1-B8hU-ZZx.js",
-			"/assets/SiteNav-7WMbbPSj.js"
+			"/assets/bridal-6IHOsdEy.js",
+			"/assets/SiteNav-CZ4WByMm.js",
+			"/assets/hero-1-B8hU-ZZx.js"
 		]
 	},
 	"/saree/$sareeId": {
 		filePath: "/Users/apple/Downloads/woven-elegance-canvas-main/src/routes/saree.$sareeId.tsx",
 		children: void 0,
-		preloads: ["/assets/saree._sareeId-rfMqsX5B.js", "/assets/SiteNav-7WMbbPSj.js"]
+		preloads: ["/assets/saree._sareeId-BurJUOfW.js", "/assets/SiteNav-CZ4WByMm.js"]
 	}
 } });
 //#endregion

@@ -1,3 +1,5 @@
+"use client";
+
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
@@ -66,8 +68,8 @@ function Index() {
       <SiteNav />
       <main className="bg-background text-foreground">
         {/* HERO */}
-        <section className="relative w-full aspect-[3/4] md:aspect-video overflow-hidden bg-[#190D02]">
-          <AnimatePresence initial={false}>
+        <section className="relative w-full aspect-video overflow-hidden bg-[#190D02]">
+          <AnimatePresence initial={false} mode="sync">
             <motion.img
               key={currentHero + (isMobile ? '-mobile' : '-desktop')}
               src={isMobile ? mobileHeroImages[currentHero] : desktopHeroImages[currentHero]}

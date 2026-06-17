@@ -1,10 +1,10 @@
 import { n as require_jsx_runtime, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { c as HeadContent, d as Outlet, f as lazyRouteComponent, g as useRouter, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as Route$3 } from "./saree._sareeId-BCB4J6fN.mjs";
+import { t as Route$3 } from "./saree._sareeId-B_UiTqx4.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CwS2TyS0.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BcQNV3PZ.js
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-BCosBHQG.css";
+var styles_default = "/assets/styles-BTl-fbGK.css";
 function NotFoundComponent() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "flex min-h-screen items-center justify-center bg-background px-4",
@@ -110,6 +110,11 @@ var Route$2 = createRootRouteWithContext()({
 		],
 		links: [
 			{
+				rel: "icon",
+				type: "image/png",
+				href: "/favicon.png"
+			},
+			{
 				rel: "preconnect",
 				href: "https://fonts.googleapis.com"
 			},
@@ -146,9 +151,9 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter$1 = () => import("./bridal-VQVPBn2g.mjs");
+var $$splitComponentImporter$1 = () => import("./bridal-DXrdZpgR.mjs");
 var Route$1 = createFileRoute("/bridal")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./routes-BAC6Psci.mjs");
+var $$splitComponentImporter = () => import("./routes-DwPiHLAB.mjs");
 var Route = createFileRoute("/")({
 	head: () => ({ meta: [
 		{ title: "Abivara Silks — Crafted Heritage. Woven Elegance." },

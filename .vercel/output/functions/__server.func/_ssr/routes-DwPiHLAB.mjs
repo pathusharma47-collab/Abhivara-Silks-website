@@ -1,9 +1,9 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-import { t as SiteNav } from "./SiteNav-BrzCYnEt.mjs";
+import { t as SiteNav } from "./SiteNav-CanpzpGT.mjs";
 import { n as hero_1_default, t as collection_bridal_default } from "./hero-1-B7lxaDBU.mjs";
 import { n as AnimatePresence, t as motion } from "../_libs/framer-motion.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BAC6Psci.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DwPiHLAB.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function LoadingScreen() {
@@ -161,7 +161,13 @@ var weaves = [
 	"Organza",
 	"Tissue Silk"
 ];
-var heroImages = [
+var desktopHeroImages = [
+	hero_1_default,
+	hero_2_default,
+	hero_3_default,
+	hero_4_default
+];
+var mobileHeroImages = [
 	hero_1_default,
 	hero_2_default,
 	hero_3_default,
@@ -169,12 +175,20 @@ var heroImages = [
 ];
 function Index() {
 	const [currentHero, setCurrentHero] = (0, import_react.useState)(0);
+	const [isMobile, setIsMobile] = (0, import_react.useState)(false);
 	(0, import_react.useEffect)(() => {
+		const checkMobile = () => setIsMobile(window.innerWidth < 768);
+		checkMobile();
+		window.addEventListener("resize", checkMobile);
+		return () => window.removeEventListener("resize", checkMobile);
+	}, []);
+	(0, import_react.useEffect)(() => {
+		const images = isMobile ? mobileHeroImages : desktopHeroImages;
 		const timer = setInterval(() => {
-			setCurrentHero((prev) => (prev + 1) % heroImages.length);
+			setCurrentHero((prev) => (prev + 1) % images.length);
 		}, 5e3);
 		return () => clearInterval(timer);
-	}, []);
+	}, [isMobile]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoadingScreen, {}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SiteNav, {}),
@@ -182,24 +196,36 @@ function Index() {
 			className: "bg-background text-foreground",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-					className: "relative w-full aspect-square md:aspect-video overflow-hidden bg-[#452718]",
+					className: "relative w-full aspect-[3/4] md:aspect-video overflow-hidden bg-[#190D02]",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AnimatePresence, {
 						initial: false,
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(motion.img, {
-							src: heroImages[currentHero],
+							src: isMobile ? mobileHeroImages[currentHero] : desktopHeroImages[currentHero],
 							alt: `Model wearing a handwoven Abivara silk saree ${currentHero + 1}`,
-							className: "absolute inset-0 h-full w-full object-cover",
+							className: "absolute inset-0 h-full w-full object-contain md:object-cover object-center",
 							initial: { x: "100%" },
 							animate: { x: 0 },
 							exit: { x: "-100%" },
 							transition: {
 								duration: 1,
 								ease: "easeInOut"
+							},
+							drag: "x",
+							dragConstraints: {
+								left: 0,
+								right: 0
+							},
+							dragElastic: .2,
+							onDragEnd: (e, { offset, velocity }) => {
+								const images = isMobile ? mobileHeroImages : desktopHeroImages;
+								const swipe = Math.abs(offset.x) * velocity.x;
+								if (swipe < -100 || offset.x < -50) setCurrentHero((prev) => (prev + 1) % images.length);
+								else if (swipe > 100 || offset.x > 50) setCurrentHero((prev) => (prev - 1 + images.length) % images.length);
 							}
-						}, currentHero)
+						}, currentHero + (isMobile ? "-mobile" : "-desktop"))
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "absolute bottom-6 left-0 right-0 z-10 flex justify-center gap-3",
-						children: heroImages.map((_, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						children: (isMobile ? mobileHeroImages : desktopHeroImages).map((_, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 							onClick: () => setCurrentHero(idx),
 							className: `h-2.5 w-2.5 rounded-full transition-all duration-300 ${idx === currentHero ? "bg-white scale-125" : "bg-white/50 hover:bg-white/80"}`,
 							"aria-label": `Go to slide ${idx + 1}`
@@ -208,7 +234,7 @@ function Index() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 					id: "story",
-					className: "px-6 py-28 md:px-12 md:py-40",
+					className: "px-4 py-16 md:px-12 md:py-40",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mx-auto grid max-w-[1280px] gap-16 md:grid-cols-12 md:gap-20",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Reveal, {
@@ -219,7 +245,7 @@ function Index() {
 									src: craft_default,
 									alt: "Artisan weaving silk",
 									loading: "lazy",
-									className: "h-full w-full object-cover"
+									className: "h-full w-full object-contain md:object-cover"
 								})
 							})
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -232,7 +258,7 @@ function Index() {
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Reveal, {
 									delay: .1,
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
-										className: "mt-8 text-4xl leading-[1.1] md:text-6xl",
+										className: "mt-8 text-2xl sm:text-3xl leading-[1.1] md:text-6xl",
 										children: [
 											"Every thread",
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
@@ -261,7 +287,7 @@ function Index() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 					id: "collections",
-					className: "border-t border-border bg-ivory px-6 py-28 md:px-12 md:py-36",
+					className: "border-t border-border bg-ivory px-4 py-16 md:px-12 md:py-36",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mx-auto max-w-[1480px]",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Reveal, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -270,7 +296,7 @@ function Index() {
 								className: "eyebrow",
 								children: "The Edits"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-								className: "mt-6 text-4xl md:text-6xl",
+								className: "mt-6 text-2xl sm:text-3xl md:text-6xl",
 								children: "Featured Collections"
 							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 								href: "#collections",
@@ -286,12 +312,12 @@ function Index() {
 									href: "#",
 									className: "group block hover-zoom",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "aspect-[4/5] overflow-hidden bg-secondary",
+										className: "aspect-[4/5] md:aspect-[3/4] w-full overflow-hidden bg-secondary",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 											src: c.img,
 											alt: c.title,
 											loading: "lazy",
-											className: "h-full w-full object-cover"
+											className: "h-full w-full object-contain md:object-cover transition-transform duration-700 hover:scale-105"
 										})
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "mt-6 flex items-end justify-between",
@@ -313,22 +339,22 @@ function Index() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 					id: "weaves",
-					className: "py-28 md:py-36",
+					className: "py-16 md:py-36",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "px-6 md:px-12",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Reveal, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "eyebrow",
 							children: "Signature Weaves"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-							className: "mt-6 max-w-3xl text-4xl md:text-6xl",
+							className: "mt-6 max-w-3xl text-2xl sm:text-3xl md:text-6xl",
 							children: "Six houses of cloth, one quiet language."
 						})] })
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "mt-16 overflow-x-auto",
+						className: "mt-16 overflow-x-auto pb-8 hide-scrollbar snap-x snap-mandatory",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
 							className: "flex min-w-max gap-6 px-6 md:px-12",
 							children: weaves.map((w, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
-								className: "w-[72vw] max-w-[360px] shrink-0 md:w-[28vw]",
+								className: "w-[65vw] max-w-[320px] shrink-0 md:w-[28vw] snap-center",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 									href: "#",
 									className: "block hover-zoom",
@@ -363,7 +389,7 @@ function Index() {
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-					className: "relative h-[100svh] w-full overflow-hidden",
+					className: "relative h-[65vh] md:h-[100svh] w-full overflow-hidden",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 							src: editorial_default,
@@ -403,7 +429,7 @@ function Index() {
 					]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-					className: "bg-ivory px-6 py-28 md:px-12 md:py-40",
+					className: "bg-ivory px-4 py-16 md:px-12 md:py-40",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mx-auto grid max-w-[1280px] items-center gap-16 md:grid-cols-2 md:gap-24",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
@@ -414,7 +440,7 @@ function Index() {
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Reveal, {
 								delay: .1,
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
-									className: "mt-8 text-4xl leading-[1.1] md:text-5xl",
+									className: "mt-8 text-3xl leading-[1.1] md:text-5xl",
 									children: [
 										"Pure silk.",
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
@@ -475,7 +501,7 @@ function Index() {
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-					className: "border-t border-border px-6 py-28 md:px-12 md:py-32",
+					className: "border-t border-border px-4 py-16 md:px-12 md:py-32",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mx-auto max-w-3xl text-center",
 						children: [
@@ -486,7 +512,7 @@ function Index() {
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Reveal, {
 								delay: .1,
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("blockquote", {
-									className: "mt-10 font-serif text-3xl leading-[1.3] text-foreground md:text-5xl",
+									className: "mt-10 font-serif text-2xl leading-[1.3] text-foreground md:text-5xl",
 									children: "“There is a stillness to an Abivara saree — a sense that someone has waited a long time to give you something true.”"
 								})
 							}),
@@ -502,14 +528,14 @@ function Index() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 					id: "journal",
-					className: "bg-ivory px-6 py-24 md:px-12 md:py-32",
+					className: "bg-ivory px-4 py-16 md:px-12 md:py-32",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mx-auto grid max-w-[1280px] gap-16 md:grid-cols-2 md:gap-24",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Reveal, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "eyebrow",
 							children: "The Circle"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
-							className: "mt-6 text-4xl leading-[1.1] md:text-5xl",
+							className: "mt-6 text-3xl leading-[1.1] md:text-5xl",
 							children: [
 								"Join the",
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
@@ -541,7 +567,7 @@ function Index() {
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mx-auto max-w-[1480px]",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid gap-12 md:grid-cols-5",
+							className: "grid grid-cols-1 gap-10 md:grid-cols-5",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "md:col-span-2",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {

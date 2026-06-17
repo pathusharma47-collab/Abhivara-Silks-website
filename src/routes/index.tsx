@@ -110,7 +110,7 @@ function Index() {
         <section id="story" className="px-4 py-16 md:px-12 md:py-40">
           <div className="mx-auto grid max-w-[1280px] gap-16 md:grid-cols-12 md:gap-20">
             <Reveal className="md:col-span-5">
-              <div className="aspect-[4/5] overflow-hidden bg-secondary">
+              <div className="aspect-video md:aspect-[4/5] overflow-hidden bg-secondary">
                 <img src={craft} alt="Artisan weaving silk" loading="lazy" className="h-full w-full object-cover" />
               </div>
             </Reveal>
@@ -171,7 +171,7 @@ function Index() {
                   }
                 >
                   <a href="#" className="group block hover-zoom">
-                    <div className="aspect-[4/5] overflow-hidden bg-secondary">
+                    <div className="aspect-video md:aspect-[4/5] overflow-hidden bg-secondary">
                       <img src={c.img} alt={c.title} loading="lazy" className="h-full w-full object-cover" />
                     </div>
                     <div className="mt-6 flex items-end justify-between">

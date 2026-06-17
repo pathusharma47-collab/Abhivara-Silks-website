@@ -56,13 +56,13 @@ function Index() {
       <SiteNav />
       <main className="bg-background text-foreground">
         {/* HERO */}
-        <section className="relative w-full aspect-[4/5] md:aspect-video overflow-hidden bg-[#190D02]">
+        <section className="relative w-full aspect-[3/4] md:aspect-video overflow-hidden bg-[#190D02]">
           <AnimatePresence initial={false}>
             <motion.img
               key={currentHero}
               src={heroImages[currentHero]}
               alt={`Model wearing a handwoven Abivara silk saree ${currentHero + 1}`}
-              className="absolute inset-0 h-full w-full object-cover object-left md:object-center"
+              className="absolute inset-0 h-full w-full object-cover object-center"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
@@ -96,7 +96,7 @@ function Index() {
         </section>
 
         {/* BRAND STORY */}
-        <section id="story" className="px-6 py-28 md:px-12 md:py-40">
+        <section id="story" className="px-4 py-16 md:px-12 md:py-40">
           <div className="mx-auto grid max-w-[1280px] gap-16 md:grid-cols-12 md:gap-20">
             <Reveal className="md:col-span-5">
               <div className="aspect-[4/5] overflow-hidden bg-secondary">
@@ -108,7 +108,7 @@ function Index() {
                 <p className="eyebrow">Our Atelier</p>
               </Reveal>
               <Reveal delay={0.1}>
-                <h2 className="mt-8 text-3xl leading-[1.1] md:text-6xl">
+                <h2 className="mt-8 text-2xl sm:text-3xl leading-[1.1] md:text-6xl">
                   Every thread<br />carries a legacy.
                 </h2>
               </Reveal>
@@ -130,13 +130,13 @@ function Index() {
         </section>
 
         {/* FEATURED COLLECTIONS */}
-        <section id="collections" className="border-t border-border bg-ivory px-6 py-28 md:px-12 md:py-36">
+        <section id="collections" className="border-t border-border bg-ivory px-4 py-16 md:px-12 md:py-36">
           <div className="mx-auto max-w-[1480px]">
             <Reveal>
               <div className="flex items-end justify-between gap-6">
                 <div>
                   <p className="eyebrow">The Edits</p>
-                  <h2 className="mt-6 text-3xl md:text-6xl">Featured Collections</h2>
+                  <h2 className="mt-6 text-2xl sm:text-3xl md:text-6xl">Featured Collections</h2>
                 </div>
                 <a href="#collections" className="hidden text-[11px] uppercase tracking-[0.32em] link-underline md:inline-block">
                   View All
@@ -180,11 +180,11 @@ function Index() {
         </section>
 
         {/* SIGNATURE WEAVES — horizontal scroll */}
-        <section id="weaves" className="py-28 md:py-36">
+        <section id="weaves" className="py-16 md:py-36">
           <div className="px-6 md:px-12">
             <Reveal>
               <p className="eyebrow">Signature Weaves</p>
-              <h2 className="mt-6 max-w-3xl text-3xl md:text-6xl">
+              <h2 className="mt-6 max-w-3xl text-2xl sm:text-3xl md:text-6xl">
                 Six houses of cloth, one quiet language.
               </h2>
             </Reveal>
@@ -192,7 +192,7 @@ function Index() {
           <div className="mt-16 overflow-x-auto pb-8 hide-scrollbar snap-x snap-mandatory">
             <ul className="flex min-w-max gap-6 px-6 md:px-12">
               {weaves.map((w, i) => (
-                <li key={w} className="w-[75vw] max-w-[360px] shrink-0 md:w-[28vw] snap-center">
+                <li key={w} className="w-[65vw] max-w-[320px] shrink-0 md:w-[28vw] snap-center">
                   <a href="#" className="block hover-zoom">
                     <div className="aspect-[3/4] overflow-hidden bg-secondary">
                       <img
@@ -214,7 +214,7 @@ function Index() {
         </section>
 
         {/* EDITORIAL CAMPAIGN */}
-        <section className="relative h-[100svh] w-full overflow-hidden">
+        <section className="relative h-[65vh] md:h-[100svh] w-full overflow-hidden">
           <img src={editorial} alt="Abivara editorial campaign" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-black/15" />
           <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
@@ -235,7 +235,7 @@ function Index() {
         </section>
 
         {/* CRAFTSMANSHIP */}
-        <section className="bg-ivory px-6 py-28 md:px-12 md:py-40">
+        <section className="bg-ivory px-4 py-16 md:px-12 md:py-40">
           <div className="mx-auto grid max-w-[1280px] items-center gap-16 md:grid-cols-2 md:gap-24">
             <div>
               <Reveal><p className="eyebrow">The Hands Behind</p></Reveal>
@@ -277,7 +277,7 @@ function Index() {
         </section>
 
         {/* TESTIMONIAL */}
-        <section className="border-t border-border px-6 py-28 md:px-12 md:py-32">
+        <section className="border-t border-border px-4 py-16 md:px-12 md:py-32">
           <div className="mx-auto max-w-3xl text-center">
             <Reveal>
               <p className="eyebrow">In Her Words</p>
@@ -298,7 +298,7 @@ function Index() {
         </section>
 
         {/* JOURNAL / NEWSLETTER */}
-        <section id="journal" className="bg-ivory px-6 py-24 md:px-12 md:py-32">
+        <section id="journal" className="bg-ivory px-4 py-16 md:px-12 md:py-32">
           <div className="mx-auto grid max-w-[1280px] gap-16 md:grid-cols-2 md:gap-24">
             <Reveal>
               <p className="eyebrow">The Circle</p>
@@ -329,7 +329,7 @@ function Index() {
         {/* FOOTER */}
         <footer className="border-t border-border bg-background px-6 py-16 md:px-12">
           <div className="mx-auto max-w-[1480px]">
-            <div className="grid gap-12 md:grid-cols-5">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-5">
               <div className="md:col-span-2">
                 <p className="font-serif text-2xl text-foreground">Abivara <span className="text-bronze">Silks</span></p>
                 <p className="mt-4 max-w-xs text-sm leading-[1.8] text-muted-foreground">

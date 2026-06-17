@@ -38,17 +38,27 @@ const weaves = [
   "Kanchipuram", "Banarasi", "Gadwal", "Pochampally", "Organza", "Tissue Silk",
 ];
 
-const heroImages = [hero1, hero2, hero3, hero4];
+const desktopHeroImages = [hero1, hero2, hero3, hero4];
+const mobileHeroImages = [hero1, hero2, hero3, hero4];
 
 function Index() {
   const [currentHero, setCurrentHero] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const images = isMobile ? mobileHeroImages : desktopHeroImages;
     const timer = setInterval(() => {
-      setCurrentHero((prev) => (prev + 1) % heroImages.length);
+      setCurrentHero((prev) => (prev + 1) % images.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isMobile]);
 
   return (
     <>
@@ -59,10 +69,10 @@ function Index() {
         <section className="relative w-full aspect-[3/4] md:aspect-video overflow-hidden bg-[#190D02]">
           <AnimatePresence initial={false}>
             <motion.img
-              key={currentHero}
-              src={heroImages[currentHero]}
+              key={currentHero + (isMobile ? '-mobile' : '-desktop')}
+              src={isMobile ? mobileHeroImages[currentHero] : desktopHeroImages[currentHero]}
               alt={`Model wearing a handwoven Abivara silk saree ${currentHero + 1}`}
-              className="absolute inset-0 h-full w-full object-cover object-center"
+              className="absolute inset-0 h-full w-full object-contain md:object-cover object-center"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
@@ -71,11 +81,12 @@ function Index() {
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.2}
               onDragEnd={(e, { offset, velocity }) => {
+                const images = isMobile ? mobileHeroImages : desktopHeroImages;
                 const swipe = Math.abs(offset.x) * velocity.x;
                 if (swipe < -100 || offset.x < -50) {
-                  setCurrentHero((prev) => (prev + 1) % heroImages.length);
+                  setCurrentHero((prev) => (prev + 1) % images.length);
                 } else if (swipe > 100 || offset.x > 50) {
-                  setCurrentHero((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+                  setCurrentHero((prev) => (prev - 1 + images.length) % images.length);
                 }
               }}
             />
@@ -83,7 +94,7 @@ function Index() {
 
           {/* Carousel Pagination Dots */}
           <div className="absolute bottom-6 left-0 right-0 z-10 flex justify-center gap-3">
-            {heroImages.map((_, idx) => (
+            {(isMobile ? mobileHeroImages : desktopHeroImages).map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentHero(idx)}

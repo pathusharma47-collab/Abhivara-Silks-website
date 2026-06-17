@@ -46,6 +46,7 @@ function SareeProductPage() {
             </div>
 
             {/* Right: Details */}
+            <div>
               <p className="eyebrow">Heritage Edition</p>
               <h1 className="mt-4 text-3xl md:text-5xl font-serif text-[var(--foreground)] leading-[1.1]">{title}</h1>
               
